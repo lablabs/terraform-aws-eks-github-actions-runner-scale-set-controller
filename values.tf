@@ -1,6 +1,15 @@
 locals {
   values_default = yamlencode({
-    # add default values here
+    serviceAccount = merge(
+      {
+        create = var.service_account_create
+        name   = var.service_account_name
+      },
+      local.irsa_role_create ? {
+        annotations = {
+          "eks.amazonaws.com/role-arn" = aws_iam_role.this[0].arn
+        }
+    } : {})
   })
 }
 

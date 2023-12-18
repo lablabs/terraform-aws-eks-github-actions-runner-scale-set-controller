@@ -18,25 +18,25 @@ variable "cluster_identity_oidc_issuer_arn" {
 
 variable "helm_chart_name" {
   type        = string
-  default     = "<$addon-name>"
+  default     = "gha-runner-scale-set-controller"
   description = "Helm chart name to be installed"
 }
 
 variable "helm_chart_version" {
   type        = string
-  default     = "<helm_chart_version>"
+  default     = "0.7.0"
   description = "Version of the Helm chart"
 }
 
 variable "helm_release_name" {
   type        = string
-  default     = "<$addon-name>"
+  default     = "gha-rs-controller"
   description = "Helm release name"
 }
 
 variable "helm_repo_url" {
   type        = string
-  default     = "<helm_repo_url>"
+  default     = "ghcr.io/actions/actions-runner-controller-charts"
   description = "Helm repository"
 }
 
@@ -48,20 +48,20 @@ variable "helm_create_namespace" {
 
 variable "namespace" {
   type        = string
-  default     = "<$addon-name>"
-  description = "The K8s namespace in which the <$addon-name> service account has been created"
+  default     = "github-actions-runner-scale-set"
+  description = "The K8s namespace in which the GitHub Actions Runner Scale Set Controller service account has been created"
 }
 
 variable "settings" {
   type        = map(any)
   default     = {}
-  description = "Additional helm sets which will be passed to the Helm chart values, see https://hub.helm.sh/charts/stable/<$addon-name>"
+  description = "Additional helm sets which will be passed to the Helm chart values, see https://hub.helm.sh/charts/stable/gha-runner-scale-set-controller"
 }
 
 variable "values" {
   type        = string
   default     = ""
-  description = "Additional yaml encoded values which will be passed to the Helm chart, see https://hub.helm.sh/charts/stable/<$addon-name>"
+  description = "Additional yaml encoded values which will be passed to the Helm chart, see https://github.com/actions/actions-runner-controller/tree/master/charts/gha-runner-scale-set-controller"
 }
 
 # ================ IRSA variables (optional) ================
@@ -80,32 +80,8 @@ variable "service_account_create" {
 
 variable "service_account_name" {
   type        = string
-  default     = "<$addon-name>"
-  description = "The k8s <$addon-name> service account name"
-}
-
-variable "irsa_role_create" {
-  type        = bool
-  default     = true
-  description = "Whether to create IRSA role and annotate service account"
-}
-
-variable "irsa_policy_enabled" {
-  type        = bool
-  default     = true
-  description = "Whether to create opinionated policy to allow operations on specified zones in `policy_allowed_zone_ids`."
-}
-
-variable "irsa_assume_role_enabled" {
-  type        = bool
-  default     = false
-  description = "Whether IRSA is allowed to assume role defined by irsa_assume_role_arn."
-}
-
-variable "irsa_assume_role_arn" {
-  type        = string
-  default     = ""
-  description = "Assume role arn. Assume role must be enabled."
+  default     = "github-actions-runner-scale-set-controller"
+  description = "The K8s GitHub Actions Runner Scale Set Controller service account name"
 }
 
 variable "irsa_additional_policies" {
@@ -116,20 +92,14 @@ variable "irsa_additional_policies" {
 
 variable "irsa_role_name_prefix" {
   type        = string
-  default     = "<$addon-name>-irsa"
-  description = "The IRSA role name prefix for <$addon-name>"
+  default     = "gha-rs-irsa"
+  description = "The IRSA role name prefix for GitHub Actions Runner Scale Set Controller"
 }
 
 variable "irsa_tags" {
   type        = map(string)
   default     = {}
   description = "IRSA resources tags"
-}
-
-variable "aws_partition" {
-  type        = string
-  default     = "aws"
-  description = "AWS partition in which the resources are located. Available values are `aws`, `aws-cn`, `aws-us-gov`"
 }
 
 # ================ argo variables (required) ================

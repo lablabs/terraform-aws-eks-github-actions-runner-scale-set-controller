@@ -1,4 +1,4 @@
-terraform 1.1.7
+terraform 1.5.6
 terraform-docs 0.16.0
 tflint 0.48.0
 checkov 2.4.25
