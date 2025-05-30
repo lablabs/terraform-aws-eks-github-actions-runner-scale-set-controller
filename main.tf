@@ -3,8 +3,8 @@
  *
  * A Terraform module to deploy the [GitHub Actions Runner Scale Set Controller](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller) on Amazon EKS cluster.
  *
- * [![Terraform validate](https://github.com/lablabs/terraform-aws-eks-terraform-aws-eks-github-actions-runner-scale-set-controller/actions/workflows/validate.yaml/badge.svg)](https://github.com/lablabs/terraform-aws-eks-terraform-aws-eks-github-actions-runner-scale-set-controller/actions/workflows/validate.yaml)
- * [![pre-commit](https://github.com/lablabs/terraform-aws-eks-terraform-aws-eks-github-actions-runner-scale-set-controller/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/lablabs/terraform-aws-eks-terraform-aws-eks-github-actions-runner-scale-set-controller/actions/workflows/pre-commit.yml)
+ * [![Terraform validate](https://github.com/lablabs/terraform-aws-eks-github-actions-runner-scale-set-controller/actions/workflows/validate.yaml/badge.svg)](https://github.com/lablabs/terraform-aws-eks-github-actions-runner-scale-set-controller/actions/workflows/validate.yaml)
+ * [![pre-commit](https://github.com/lablabs/terraform-aws-eks-github-actions-runner-scale-set-controller/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/lablabs/terraform-aws-eks-github-actions-runner-scale-set-controller/actions/workflows/pre-commit.yaml)
  */
 locals {
   addon = {
@@ -28,4 +28,6 @@ locals {
       } : tomap({})
     }
   })
+
+  addon_depends_on = []
 }
